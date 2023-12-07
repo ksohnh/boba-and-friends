@@ -5,8 +5,10 @@ import { homeStyles } from "../styles/HomeScreen"
 import { useEffect } from 'react';
 import { auth, onAuthStateChanged, db, doc, getDoc } from '../src/firebase/config';
 
+// home page, the initial starting point of the app
 export default function Initial({navigation}) {
   const [text, setText] = useState('');
+  // empty data
   const emptyUser = {
     "NumberOfLikes":0,
     "bio":"",
@@ -15,6 +17,7 @@ export default function Initial({navigation}) {
     "likedShops":[],
     "name":""
 }
+// the api key necessary to make calls
   const options = {
     method: 'GET',
     headers: {
@@ -23,6 +26,7 @@ export default function Initial({navigation}) {
     }
   };
 
+  // empty data
   const testData = 
     {
       "businesses": [
@@ -82,6 +86,7 @@ export default function Initial({navigation}) {
     };
   
 
+  // takes the query put in by the user and makes an api call to yelp fusion
   async function handleSubmit(){
     console.log(text)
     fetch(`https://api.yelp.com/v3/businesses/search?location=Cambridge%2C%20Massachusetts&term=boba&sort_by=best_match&limit=20&origin=*`, options)
@@ -92,6 +97,7 @@ export default function Initial({navigation}) {
           setText("No results");
         }
         else{
+          // navigating to the search screen passing the data as props if the data actually returned
           navigation.navigate("Search", {
             data: response
           })
@@ -103,6 +109,7 @@ export default function Initial({navigation}) {
 
   const [user, setUser] = useState(emptyUser);
   useEffect(()=>{
+    // checking if the user logged in or not
     onAuthStateChanged(auth, (curUser)=>{
       if(curUser){
         getDoc(doc(db, "users", curUser.uid))
@@ -121,6 +128,7 @@ export default function Initial({navigation}) {
     })
   },[])
 
+  // rendering the home screen
   return (
     <ScrollView style={homeStyles.container}>
       <TextInput style={homeStyles.searchBar}
@@ -133,6 +141,7 @@ export default function Initial({navigation}) {
         <Text style={homeStyles.headerText}>boba&friends</Text>
       </View>
       <View style={homeStyles.body}>
+        {/* conditional rendering of a welcome message if the user is logged in */}
         <View style={homeStyles.bodyContainer}>
         {user ? (  
           <View>

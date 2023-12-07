@@ -4,8 +4,10 @@ import { auth, signOut } from "../src/firebase/config"
 import { useState, useEffect } from "react"
 import { onAuthStateChanged, db, doc, getDoc } from "../src/firebase/config"
 
+// user page
 export default function User({navigation}){
     const src = require("../assets/default.png")
+    // default information as a placeholder for rendering
     const emptyShop = {
         "Image":"",
         "LikedBy":[],
@@ -23,6 +25,7 @@ export default function User({navigation}){
     const [shopAr, setShopAr] = useState([emptyShop, emptyShop, emptyShop]);
 
     function handleLogout() {
+        // handling the logout if the logout button is clicked
         signOut(auth).then(()=>{
             console.log("Sign out successful");
             navigation.navigate('Registration')
@@ -35,6 +38,7 @@ export default function User({navigation}){
 
     const [user, setUser] = useState(emptyUser)
     useEffect(()=>{
+        // checking if the user is logged in
         onAuthStateChanged(auth, (curUser)=>{
         if(curUser){
             getDoc(doc(db, "users", curUser.uid))
@@ -49,11 +53,13 @@ export default function User({navigation}){
         })
     },[])
 
+    // debugging
     useEffect(()=>{
         console.log("shopAr")
         console.log(shopAr)
     }, [shopAr])
 
+    // rendering the user page
     return ( 
     <View style={userStyles.container}>
         <View style={userStyles.profile}>
@@ -69,6 +75,7 @@ export default function User({navigation}){
                 </View>
             </View>
             <Text style={userStyles.profileName}>{user.name}</Text>
+            {/* conditional rendering of a person's bio if it isn't available */}
             {user.bio ? (
                 <Text style={userStyles.profileBio}>
                     {user.bio}
@@ -78,6 +85,7 @@ export default function User({navigation}){
                     <Text>Click to fill out a bio!</Text>
                 </Pressable>
             )}
+            {/* logout button */}
             <Pressable style={userStyles.logoutButton} onPress={handleLogout}>
                 <Text style={userStyles.logoutText}>Logout</Text>    
             </Pressable>

@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+
+// style sheet for the login page
 export const loginStyles = StyleSheet.create({
     container: {
         flex: 1,

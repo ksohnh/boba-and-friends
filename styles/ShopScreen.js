@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native"
 
+// style sheet for the shop details page
 export const shopStyles = StyleSheet.create({
     container:{
         backgroundColor: "lightgray"

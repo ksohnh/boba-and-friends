@@ -14,10 +14,12 @@ import { useState } from "react";
 import { auth, onAuthStateChanged } from "./src/firebase/config";
 import { useEffect } from "react";
 
+// the base file for the app, has the navigation containers
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+// the stack for the home screen
 const HomeScreenNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown:false}}>
@@ -28,7 +30,9 @@ const HomeScreenNavigator = () => {
   );
 }
 
+// the stack for the user page
 const LoginScreenNavigator = () => {
+  // checking if they logged in
   const [user, setUser] = useState(null);
   useEffect(()=>{
     onAuthStateChanged(auth, (curUser)=>{
@@ -55,6 +59,7 @@ const LoginScreenNavigator = () => {
   )
 }
 
+// the bottom tab navigator for the entire app
 export default function App() {
   return(
     <NavigationContainer>

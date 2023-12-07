@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native"
 
+
+// style sheet for the search screen
 export const searchStyles = StyleSheet.create({
     container:{
         paddingBottom: 150

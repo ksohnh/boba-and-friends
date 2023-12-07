@@ -3,7 +3,9 @@ import { searchStyles } from "../styles/SearchScreen"
 import { useState, useEffect } from "react";
 import Stars from "./Stars";
 
+// search page
 export default function App({ route, navigation }) {
+    // taking the api data as a prop
     const { data } = route.params;
     const [text, setText] = useState("");
     const testData = {
@@ -111,6 +113,7 @@ export default function App({ route, navigation }) {
             "use_case_text": "Message the Business"
         }
     }
+    // api key information for the Yelp Fusion API
     const options = {
         method: 'GET',
         headers: {
@@ -119,6 +122,7 @@ export default function App({ route, navigation }) {
         }
     };
 
+    // navigating to a specific shop's page once their section is clicked
     async function handlePress(cur) {
         let shopData = await fetch(`https://api.yelp.com/v3/businesses/${cur.id}`, options)
         .then(response => response.json())
@@ -131,6 +135,7 @@ export default function App({ route, navigation }) {
         })
     }
 
+    // handling another search if the user uses the search bar again to query for a different thing
     async function handleSubmit(){
         let e = await fetch(`https://api.yelp.com/v3/businesses/search?location=Cambridge%2C%20Massachusetts&term=${text}&sort_by=best_match&limit=20`, options)
           .then(response => response.json())
@@ -150,6 +155,7 @@ export default function App({ route, navigation }) {
             defaultValue={text}
             onSubmitEditing={handleSubmit}/>
             <ScrollView style={searchStyles.shopHub}>
+                {/* mapping out each shop's information based on the data passed in by the props */}
                 {data["businesses"].map((cur, index) =>
                 (
                     <TouchableHighlight
@@ -164,7 +170,9 @@ export default function App({ route, navigation }) {
                             }} />
                             <View style={searchStyles.shopText}>
                                 <Text numberOfLines={1} ellipsizeMode="tail" style={searchStyles.shopName}>{index + 1}. {cur.name}</Text>
+                                {/* passing in the rating as a prop to the stars function to get a number of bobas representing the stars */}
                                 <Stars stars={cur.rating} />
+                                {/* conditional rendering showing if the shop is closed or not */}
                                 {cur.is_closed ?
                                     (<Text style={searchStyles.closed}>Closed</Text>)
                                     :

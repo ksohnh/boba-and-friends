@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+
+// style sheet for the registration page
 export const registerStyles = StyleSheet.create({
     container: {
         flex: 1,

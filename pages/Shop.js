@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Stars from "./Stars";
 import {db, doc, increment, setDoc, getDoc, onAuthStateChanged, auth, arrayUnion, updateDoc} from "../src/firebase/config.js"
 
+// shop details page
 export default function Shop({ route, navigation }) {
     // const data = {
     //     "id": "cNNTPEqz5uMY5cjCW7M8oA",
@@ -118,6 +119,7 @@ export default function Shop({ route, navigation }) {
 
     const [hoursVisible, setHoursVisible] = useState(true);
 
+    // button calling the shop if clicked
     function handleCall() {
         Linking.canOpenURL(`tel:${data["phone"]}`)
         .then((supported) => {
@@ -130,6 +132,7 @@ export default function Shop({ route, navigation }) {
         })
     }
 
+    // button handling the like if clicked, updating the user and shop's information
     async function handleLike() { 
         console.log(user)
         console.log("uid: " + uid)
@@ -142,7 +145,9 @@ export default function Shop({ route, navigation }) {
         let ref = doc(db, "shops", data["id"])
         let ss = await getDoc(ref)
 
+        // checking if the shop is already inputted or not
         if(!(ss.data()=== undefined)){
+            // if it exists, update the likes
             console.log("Updating doc")
             if(!ss.data().LikedBy.includes(uid)){
                 await updateDoc(ref, {
@@ -153,6 +158,7 @@ export default function Shop({ route, navigation }) {
             else{                  
             }
         }
+        // if not, create a new shop with 1 like
         else{
             console.log("Creating new doc")
             await setDoc(doc(db, "shops", data["id"]), {
@@ -164,6 +170,7 @@ export default function Shop({ route, navigation }) {
             }
     }
 
+    // button navigating to Yelp's specific shop page to order food if clicked
     function handleOrder() {
         Linking.canOpenURL(`tel:${data["url"]}`)
         .then((supported) => {
@@ -176,6 +183,7 @@ export default function Shop({ route, navigation }) {
         })
     }
 
+    // displaying and hiding the shop's hours
     function handleClick() {
         if (hoursVisible) {
             setHoursVisible(false);
@@ -185,11 +193,12 @@ export default function Shop({ route, navigation }) {
         }
     }
 
-
+    // rendering the hours in an easily digestible list
     function HoursList() {
         let today = new Date();
         let day = today.getDay();
         if (hoursVisible) {
+            // returning a mapped out version of the hours if clicked
             const ret = (hours.map((value, index) =>
                 <View style={shopStyles.hoursMenuItem} key={index}>
                     <Text style={shopStyles.dayName}>{daysOfWeek[value.day]}</Text>
@@ -205,6 +214,7 @@ export default function Shop({ route, navigation }) {
                 </TouchableHighlight>
             )
         }
+        // showing the hours for the current day if clicked
         return (
             <TouchableHighlight activeOpacity={0.6}
                 underlayColor="#DDDDDD" onPress={handleClick}>
@@ -219,6 +229,7 @@ export default function Shop({ route, navigation }) {
         )
     }
 
+    // function converting the time from military (gotten from the API) to standard
     function toStandard(inputTime) {
         let hours = parseInt(inputTime.substr(0, 2));
         let minutes = inputTime.substr(2, 4);
@@ -233,6 +244,7 @@ export default function Shop({ route, navigation }) {
         return ret;
     }
 
+    // checking if the user is logged in
     useEffect(()=>{
         onAuthStateChanged(auth, (curUser)=>{
         if(curUser){
@@ -253,6 +265,7 @@ export default function Shop({ route, navigation }) {
         })
     },[])
 
+    // rendering the shop details page
     return (
         <ScrollView style={shopStyles.container}>
             <View style={shopStyles.header}>

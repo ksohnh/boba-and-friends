@@ -21,6 +21,7 @@ import {
   getDocs
 } from "firebase/firestore";
 
+// configuration for the specific firebase project
 const firebaseConfig = {
   apiKey: 'AIzaSyDSXovsvfmhq07wuzgZHqDJtDgZ21u4xY8',
   authDomain: 'bobaandfriends-33d26.firebaseapp.com',
@@ -31,11 +32,12 @@ const firebaseConfig = {
   appId: '1:919066001466:ios:0a8566867ad4d13225f503',
 };
 
-
+// initializing firebase and all of the necessary components
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// exports the functions to be used in other files
 export {
   auth, 
   db, 

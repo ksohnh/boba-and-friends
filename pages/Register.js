@@ -4,6 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { registerStyles } from '../styles/RegisterScreen';
 import { auth, createUserWithEmailAndPassword, setDoc, doc, db } from '../src/firebase/config';
 
+// registration page
 export default function RegistrationScreen({navigation}) {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
@@ -18,6 +19,7 @@ export default function RegistrationScreen({navigation}) {
 
     const onRegisterPress = () => {
         console.log(email + " " + fullName + " " + password, bio);
+        // using firebase to register someone based on the inputs they put in
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 let curUser = userCredential.user
@@ -37,6 +39,7 @@ export default function RegistrationScreen({navigation}) {
             })
     }
 
+    // rendering the registration page
     return (
         <View style={registerStyles.container}>
             <KeyboardAwareScrollView
@@ -88,6 +91,7 @@ export default function RegistrationScreen({navigation}) {
                     value={bio}
                     autoCapitalize="none"
                 />
+                {/* error text that renders an error for the user to see if they inputted something incorrectly */}
                 <Text style={registerStyles.errorText}>{error}</Text>
                 <TouchableOpacity
                     style={registerStyles.button}

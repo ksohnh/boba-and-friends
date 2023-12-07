@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+
+// style sheet for the user page
 export const userStyles = StyleSheet.create({
     container: {
         flex: 1,

@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native"
 
+
+// style sheet for the home page
 export const homeStyles = StyleSheet.create({
     container: {
         flex:1,
