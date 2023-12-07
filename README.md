@@ -1,4 +1,6 @@
-In order to start using this app, access the GitHub using the link submitted to the main project. Clone the repository into your local computer or device. Instructions on how to clone a repository are here: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository. Once you have the repository, open your terminal and use the cd command to enter into the main folder "boba_and_friends". 
+https://github.com/KevinSohn/boba_and_friends.git
+
+In order to start using this app, download the files submitted to the final project on gradescope. Alternatively, you can access the GitHub using the link above. Clone the repository into your local computer or device. Instructions on how to clone a repository are here: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository. Once you have the repository, open your terminal and use the cd command to enter into the main folder "boba_and_friends". 
 
 From there, run "npm add expo" in your terminal to add the expo dependency to the project, a requisite in order to run the development server of this app. Make sure you have "node" installed on your computer to be able to run "npm" and "npx" commands. You can install node from this website here: https://nodejs.org/en/download.
 
