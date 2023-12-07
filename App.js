@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from 'react';
-import Home from "./pages/Home"
+import Initial from "./pages/Initial"
 import Shop from "./pages/Shop"
 import Search from "./pages/Search"
 import User from "./pages/User";
@@ -21,7 +21,7 @@ const Tab = createBottomTabNavigator();
 const HomeScreenNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown:false}}>
-      <Stack.Screen name="Home" component={Home}></Stack.Screen>
+      <Stack.Screen name="Initial" component={Initial}></Stack.Screen>
       <Stack.Screen name="Search" component={Search} />
       <Stack.Screen name="Shop" component={Shop} />
     </Stack.Navigator>
@@ -60,7 +60,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator screenOptions={{headerShown:false}}>
         <Tab.Screen name="Home" component={HomeScreenNavigator}></Tab.Screen>
-        <Tab.Screen name="User" component={LoginScreenNavigator}></Tab.Screen>
+        <Tab.Screen name="Profile" component={LoginScreenNavigator}></Tab.Screen>
         {/* <Tab.Screen name="Explore" component={Explore}></Tab.Screen> */}
       </Tab.Navigator>
     </NavigationContainer>

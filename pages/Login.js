@@ -40,7 +40,6 @@ export default function LoginScreen({navigation}) {
                     placeholderTextColor="#aaaaaa"
                     onChangeText={(text) => setEmail(text)}
                     value={email}
-                    underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
                 <TextInput
@@ -50,7 +49,6 @@ export default function LoginScreen({navigation}) {
                     placeholder='Password'
                     onChangeText={(text) => setPassword(text)}
                     value={password}
-                    underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
                 <TouchableOpacity

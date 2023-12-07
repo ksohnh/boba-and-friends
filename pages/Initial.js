@@ -5,7 +5,7 @@ import { homeStyles } from "../styles/HomeScreen"
 import { useEffect } from 'react';
 import { auth, onAuthStateChanged, db, doc, getDoc } from '../src/firebase/config';
 
-export default function HomeScreen({navigation}) {
+export default function Initial({navigation}) {
   const [text, setText] = useState('');
   const emptyUser = {
     "NumberOfLikes":0,
@@ -147,10 +147,10 @@ export default function HomeScreen({navigation}) {
         </View>
       </View>
       
-      <View style={homeStyles.footer}>
+      {/* <View style={homeStyles.footer}>
         <Text style={homeStyles.footerText}>Made by Kevin Sohn</Text>
         <Text style={homeStyles.footerText}>CS50 Final Project</Text>
-      </View>
+      </View> */}
       <StatusBar style="auto" />
     </ScrollView>
   );

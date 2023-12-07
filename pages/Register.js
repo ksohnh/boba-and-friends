@@ -52,7 +52,6 @@ export default function RegistrationScreen({navigation}) {
                     placeholderTextColor="#aaaaaa"
                     onChangeText={(text) => setFullName(text)}
                     value={fullName}
-                    underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
                 <TextInput
@@ -61,7 +60,6 @@ export default function RegistrationScreen({navigation}) {
                     placeholderTextColor="#aaaaaa"
                     onChangeText={(text) => setEmail(text)}
                     value={email}
-                    underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
                 <TextInput
@@ -71,7 +69,6 @@ export default function RegistrationScreen({navigation}) {
                     placeholder='Password'
                     onChangeText={(text) => setPassword(text)}
                     value={password}
-                    underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
                 <TextInput
@@ -81,7 +78,6 @@ export default function RegistrationScreen({navigation}) {
                     placeholder='Confirm Password'
                     onChangeText={(text) => setConfirmPassword(text)}
                     value={confirmPassword}
-                    underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
                 <TextInput
@@ -90,7 +86,6 @@ export default function RegistrationScreen({navigation}) {
                     placeholderTextColor="#aaaaaa"
                     onChangeText={(text) => setBio(text)}
                     value={bio}
-                    underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
                 <Text style={registerStyles.errorText}>{error}</Text>

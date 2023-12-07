@@ -45,7 +45,7 @@ export const homeStyles = StyleSheet.create({
     },
     body: {
         backgroundColor:"white",
-        height: 400
+        height: 500
     },
     portLabel:{
         margin: "8%",
