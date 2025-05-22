@@ -14,6 +14,7 @@ export default function LoginScreen({navigation}) {
     }
 
     const onLoginPress = () => {
+        // using firebase to sign people in based on the stuff that they inputted
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
@@ -26,6 +27,7 @@ export default function LoginScreen({navigation}) {
         })
     }
 
+    // rending the login page
     return (
         <View style={loginStyles.container}>
             <KeyboardAwareScrollView
