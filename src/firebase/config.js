@@ -22,15 +22,7 @@ import {
 } from "firebase/firestore";
 
 // configuration for the specific firebase project
-const firebaseConfig = {
-  apiKey: 'AIzaSyDSXovsvfmhq07wuzgZHqDJtDgZ21u4xY8',
-  authDomain: 'bobaandfriends-33d26.firebaseapp.com',
-  databaseURL: 'bobaandfriends.firebaseio.com',
-  projectId: 'bobaandfriends-33d26',
-  storageBucket: 'bobaandfriends-33d26.appspot.com',
-  messagingSenderId: '919066001466',
-  appId: '1:919066001466:ios:0a8566867ad4d13225f503',
-};
+const firebaseConfig = {};
 
 // initializing firebase and all of the necessary components
 const app = initializeApp(firebaseConfig);
